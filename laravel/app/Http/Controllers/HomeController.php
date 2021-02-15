@@ -21,6 +21,7 @@ class HomeController extends Controller
         return view('home');
     }
 
+    // update
     public function update(Request $request) {
         // dd($request -> all());
 
@@ -42,6 +43,21 @@ class HomeController extends Controller
         $user -> save(); //salvo nel db
 
         return redirect() -> back();
+    }
+
+    // delite
+    public function iconDelete() {
+
+        $this -> clearOldIcon();
+
+        $user = Auth::user();
+        $icon = $user -> icon;
+        
+        $user -> icon = ''; //elimino l'informazione
+        $user -> save();
+
+        return redirect() -> back();
+
     }
 
     //elimina le foto che non ci sono piu'

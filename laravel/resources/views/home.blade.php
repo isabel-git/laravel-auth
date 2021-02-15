@@ -7,7 +7,7 @@
 
             <!-- CARD 1 -->
             <div class="card">
-                <div class="card-header">User image</div>
+                <div class="card-header">Choose image</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -27,14 +27,17 @@
                         <br>
 
                         <input type="submit" class="btn btn-primary" value="UPDATE">
-                        <a href="#" class="btn btn-danger">DELETE</a>
+                        <a href="{{ route('delete') }}" class="btn btn-danger">DELETE</a>
                     </form>
                 </div>
             </div>
 
+            
             <!-- CARD 2 -->
+            @if (Auth::user() -> icon) {{-- esegue la card 2 solo se c'e' l'icona --}}
+                
             <div class="card">
-                <div class="card-header">User image</div>
+                <div class="card-header">Image</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -45,6 +48,8 @@
 
                     <img src="/storage/icons/{{ Auth::user() -> icon }}" alt="" width="200px">
                 </div>
+            @endif
+            
         </div>
     </div>
 </div>
